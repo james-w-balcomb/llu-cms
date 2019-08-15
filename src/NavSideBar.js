@@ -24,7 +24,7 @@ class NavSideBar extends Component {
                 <ListGroup>
                     {this.state.contentDocuments.map((contentDocument) => (
                         <ListGroupItem key={contentDocument.contentPagePath}>
-                            <Link key={contentDocument.contentPagePath} to={contentDocument.contentPagePath}>{contentDocument.contentPageTitle}</Link>
+                            <Link key={contentDocument.contentPagePath} to={contentDocument.contentPagePath}>{contentDocument.contentPagePath}</Link>
                         </ListGroupItem>
                     ))}
                 </ListGroup>

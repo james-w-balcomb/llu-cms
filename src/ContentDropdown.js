@@ -54,7 +54,7 @@ class ContentDropdown extends React.Component {
                             key={contentDocument.contentPagePath}
                             onClick={this.handleClick}
                         >
-                            {contentDocument.contentPageTitle}
+                            {contentDocument.contentPagePath}
                         </DropdownItem>
                     ))}
                 </DropdownMenu>
