@@ -9,6 +9,8 @@ import ContentDocumentsUrlList from './ContentDocumentsUrlList.js';
 import ContentDocumentsCards from './ContentDocumentsCards.js';
 import NavTopBar from "./NavTopBar";
 import NavSideBar from "./NavSideBar";
+import LluContentTableAsJsonObjects from "./LluContentTableAsJsonObjects";
+import LluContentTableAsJsonArrays from "./LluContentTableAsJsonArrays";
 
 class App extends Component {
     render() {
@@ -28,6 +30,8 @@ class App extends Component {
                         </div>
                         <div className="col-md">
                             <Route exact path="/" component={Home}/>
+                            <Route path="/llu-content-table-as-json-objects" component={LluContentTableAsJsonObjects} />
+                            <Route path="/llu-content-table-as-json-arrays" component={LluContentTableAsJsonArrays} />
                             <Route path="/add-content-document" component={AddContentDocument} />
                             <Route path="/content-documents-url-list" component={ContentDocumentsUrlList} />
                             <Route path="/content-documents-cards" component={ContentDocumentsCards} />
