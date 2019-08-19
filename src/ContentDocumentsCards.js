@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom';
 import {
     Container,
     Row,
@@ -13,9 +14,14 @@ import {
 
 class ContentDocumentsCards extends Component {
 
-    state = {
-        contentDocuments: []
-    };
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.nextPath = this.nextPath.bind(this);
+        this.state = {
+            contentDocuments: []
+        };
+    }
 
     componentDidMount() {
         fetch('http://localhost:3300/content')
@@ -25,6 +31,39 @@ class ContentDocumentsCards extends Component {
                 console.log(this.state.contentDocuments)
             })
             .catch(console.log)
+    }
+
+    nextPath(path) {
+        this.props.history.push(path);
+    }
+
+    handleClick(event) {
+        this.setState({
+            value: event.currentTarget.textContent
+        });
+        let id = event.currentTarget.getAttribute("id");
+        console.log("id: " + id);
+        this.nextPath(id)
+    }
+
+    handleClickDelete(event) {
+
+        const documentId = event.currentTarget.getAttribute("id");
+
+        const data = { "isDeleted": true };
+
+        const url = "http://localhost:3300/content/" + documentId;
+
+        const options = {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        };
+
+        fetch(url, options)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(error => console.log(error));
     }
 
     render() {
@@ -37,18 +76,15 @@ class ContentDocumentsCards extends Component {
                         {this.state.contentDocuments.map((contentDocument) => (
                             <Card key={contentDocument.contentPagePath} color="primary">
                                 <CardBody>
-                                    <CardTitle className="h3 mb-2 pt-2 font-weight-bold">{contentDocument.contentPageTitle}</CardTitle>
+                                    <CardTitle className="h3 mb-2 pt-2 font-weight-bold">{contentDocument.contentPageTitle} (Deleted: {contentDocument.isDeleted})</CardTitle>
                                     <CardSubtitle className="mb-3 font-weight-light text-uppercase">{contentDocument.contentPagePath}</CardSubtitle>
                                     <CardText className="mb-4"> {contentDocument.contentContent}</CardText>
                                     <Row>
-                                        <Col xs={'auto'}>
-                                            <Button color="success">Call</Button>
+                                        <Col sm={'auto'}>
+                                            <Button id={"/edit-content-document/" + contentDocument._id} onClick={this.handleClick} color="warning">Edit</Button>
                                         </Col>
                                         <Col sm={'auto'}>
-                                            <Button color="warning">Message</Button>
-                                        </Col>
-                                        <Col sm={'auto'}>
-                                            <Button color="success">Email</Button>
+                                            <Button id={contentDocument._id} onClick={this.handleClickDelete} color="danger">Delete</Button>
                                         </Col>
                                     </Row>
                                 </CardBody>
@@ -64,4 +100,4 @@ class ContentDocumentsCards extends Component {
 
 }
 
-export default ContentDocumentsCards;
+export default withRouter(ContentDocumentsCards);

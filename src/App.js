@@ -5,6 +5,7 @@ import './App.css';
 
 import Home from './Home.js';
 import AddContentDocument from './AddContentDocument.js';
+import EditContentDocument from './EditContentDocument.js';
 import ContentDocumentsUrlList from './ContentDocumentsUrlList.js';
 import ContentDocumentsCards from './ContentDocumentsCards.js';
 import NavTopBar from "./NavTopBar";
@@ -33,6 +34,7 @@ class App extends Component {
                             <Route path="/llu-content-table-as-json-objects" component={LluContentTableAsJsonObjects} />
                             <Route path="/llu-content-table-as-json-arrays" component={LluContentTableAsJsonArrays} />
                             <Route path="/add-content-document" component={AddContentDocument} />
+                            <Route path="/edit-content-document/:id" component={EditContentDocument} />
                             <Route path="/content-documents-url-list" component={ContentDocumentsUrlList} />
                             <Route path="/content-documents-cards" component={ContentDocumentsCards} />
                         </div>
