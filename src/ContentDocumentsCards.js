@@ -81,6 +81,9 @@ class ContentDocumentsCards extends Component {
                                     <CardText className="mb-4"> {contentDocument.contentContent}</CardText>
                                     <Row>
                                         <Col sm={'auto'}>
+                                            <Button id={"/view-content-document/" + contentDocument.contentPagePath} onClick={this.handleClick} color="success">View</Button>
+                                        </Col>
+                                        <Col sm={'auto'}>
                                             <Button id={"/edit-content-document/" + contentDocument._id} onClick={this.handleClick} color="warning">Edit</Button>
                                         </Col>
                                         <Col sm={'auto'}>
