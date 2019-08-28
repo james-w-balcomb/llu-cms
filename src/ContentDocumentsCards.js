@@ -24,7 +24,7 @@ class ContentDocumentsCards extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3300/content')
+        fetch(`${process.env.REACT_APP_LLU_API_URL}/content`)
             .then(res => res.json())
             .then((data) => {
                 this.setState({ contentDocuments: data });
@@ -52,7 +52,7 @@ class ContentDocumentsCards extends Component {
 
         const data = { "isDeleted": true };
 
-        const url = "http://localhost:3300/content/" + documentId;
+        const url = `${process.env.REACT_APP_LLU_API_URL}/content/${documentId}`;
 
         const options = {
             method: "PUT",

@@ -90,7 +90,7 @@ class AddContentDocument extends React.Component {
         console.log("contentDocument");
         console.log(contentDocument);
 
-        const url = "http://localhost:3300/content/";
+        const url = `{process.env.REACT_APP_LLU_API_URL}/content/`;
         console.log("url");
         console.log(url);
 

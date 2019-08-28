@@ -12,7 +12,7 @@ import {
 import ContentDropdown from './ContentDropdown.js'
 import SiteDropdown from './SiteDropdown.js'
 
-const LLU_CONTENT_URLS_ENDPOINT = 'http://localhost:3300/page-path-and-title-list';
+const LLU_CONTENT_URLS_ENDPOINT = `${process.env.REACT_APP_LLU_API_URL}/page-path-and-title-list`;
 
 class NavTopBar extends Component {
 

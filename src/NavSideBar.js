@@ -9,7 +9,7 @@ class NavSideBar extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:3300/page-path-and-title-list')
+        fetch(`${process.env.REACT_APP_LLU_API_URL}/page-path-and-title-list`)
             .then(res => res.json())
             .then((data) => {
                 this.setState({ contentDocuments: data });

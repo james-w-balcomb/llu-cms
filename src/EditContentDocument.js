@@ -32,7 +32,7 @@ class EditContentDocument extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3300/content/${this.props.match.params.id}`)
+        fetch(`${process.env.REACT_APP_LLU_API_URL}/content/${this.props.match.params.id}`)
             .then(response => response.json())
             .then(result => {
                 this.setState({ contentDocument: result });
@@ -106,7 +106,7 @@ class EditContentDocument extends React.Component {
         console.log("contentDocument");
         console.log(contentDocument);
 
-        const url = "http://localhost:3300/content/" + documentId;
+        const url = `${process.env.REACT_APP_LLU_API_URL}/content/${documentId}`;
         console.log("url");
         console.log(url);
 

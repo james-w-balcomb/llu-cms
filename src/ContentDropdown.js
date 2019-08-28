@@ -2,7 +2,7 @@ import React from "react";
 import {withRouter} from 'react-router-dom';
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
 
-const LLU_CONTENT_URLS_ENDPOINT = 'http://localhost:3300/page-path-and-title-list';
+const LLU_CONTENT_URLS_ENDPOINT = `${process.env.REACT_APP_LLU_API_URL}/page-path-and-title-list`;
 
 class ContentDropdown extends React.Component {
 

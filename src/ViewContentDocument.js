@@ -29,7 +29,7 @@ class ViewContentDocument extends Component {
     componentDidMount() {
         console.log("componentDidMount");
         console.log(this.props.match.params.id);
-        fetch(`http://localhost:3300/content/page-path/${this.props.match.params.id}`)
+        fetch(`${process.env.REACT_APP_LLU_API_URL}/content/page-path/${this.props.match.params.id}`)
             .then(response => response.json())
             .then(result => {
                 this.setState({ contentDocument: result });
